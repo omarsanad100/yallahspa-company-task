@@ -48,7 +48,7 @@ const ServiceCard = ({ id, image, name, type }: ServiceCardProps) => {
         <button
           disabled={isLoading}
           onClick={handleLoading}
-          className="px-10 py-2 text-gray-800 font-medium font-poppins bg-gradient-to-r from-white/80 to-green-500/80 backdrop-blur-md border-b border-green-300/40 shadow-lg  rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer"
+          className="px-10 py-2 text-gray-800 font-medium font-poppins bg-gradient-to-r from-rose-200/80 to-indigo-200/80 backdrop-blur-md border-b border-indigo-300/40 shadow-lg rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer"
         >
           {isLoading ? (
             <span className="animate-spin">Loading...</span>
