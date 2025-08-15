@@ -25,3 +25,4 @@ A React + TypeScript project showcasing services, dynamic pricing, and custom pa
 - **Axios** for API calls
 - **TailwindCSS** for styling
 - **Lucide React** for icons
+- **shadcn** for UI
