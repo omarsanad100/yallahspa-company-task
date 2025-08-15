@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <div
-      className="  min-h-screen p-6 transition-colors relative
+      className="min-h-screen transition-colors relative
     data-[theme-mode=light]:bg-white
     data-[theme-mode=dark]:bg-gradient-to-br
     data-[theme-mode=dark]:from-black/80
