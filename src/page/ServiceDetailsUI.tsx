@@ -99,7 +99,7 @@ const ServiceDetailsUI = ({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Price Options */}
-            <div className="border rounded-lg p-4 ">
+            <div className="border rounded-lg p-4 dark:text-white">
               <h2 className="text-xl font-semibold mb-3">Session Options</h2>
 
               {service.prices?.length > 0 && (
@@ -107,14 +107,14 @@ const ServiceDetailsUI = ({
                   {service.prices.map((price: any) => (
                     <div
                       key={price.duration}
-                      className={`p-3 border rounded-lg cursor-pointer transition-all dark:bg-gray-400 dark:text-black${
+                      className={`p-3 border rounded-lg cursor-pointer transition-all dark:bg-gray-400 dark:text-white${
                         selectedPrice?.duration === price.duration
                           ? "border-green-500 bg-green-50"
                           : "hover:border-gray-300"
                       }`}
                       onClick={() => setSelectedPrice(price)}
                     >
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-center dark:text-white">
                         <span className="font-medium">{price.label}</span>
                         <span className="font-bold">${price.price}</span>
                       </div>
@@ -126,8 +126,10 @@ const ServiceDetailsUI = ({
 
             {/* Repeat Options (Custom Services Only) */}
             {service.type === "custom" && service.repeats?.length > 0 && (
-              <div className="border rounded-lg p-4">
-                <h2 className="text-xl font-semibold mb-3">Package Options</h2>
+              <div className="border rounded-lg p-4 ">
+                <h2 className="text-xl font-semibold mb-3 dark:text-white">
+                  Package Options
+                </h2>
 
                 <div className="space-y-3">
                   {service.repeats.map((repeat: any) => (
@@ -152,7 +154,7 @@ const ServiceDetailsUI = ({
           </div>
 
           {/* Price Display */}
-          <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-400 dark:text-black rounded-lg ">
+          <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-400 dark:text-white rounded-lg ">
             <div className="flex justify-between items-center">
               <div>
                 <h3 className="text-lg font-semibold">Total Price</h3>

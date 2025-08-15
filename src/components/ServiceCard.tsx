@@ -24,7 +24,7 @@ const ServiceCard = ({ id, image, name, type }: ServiceCardProps) => {
   return (
     <div className="bg-gray-100 rounded-xl shadow-md overflow-hidden hover:shadow-lg hover:shadow-green-500/50 transition ">
       {/* Image & Badge */}
-      <div className="relative h-48">
+      <div className="relative h-48 ">
         <img src={image} alt={name} className="w-full h-full object-cover" />
         <span
           className={`absolute top-3 right-3 px-2 py-1 rounded-full text-xs font-medium ${
@@ -42,7 +42,7 @@ const ServiceCard = ({ id, image, name, type }: ServiceCardProps) => {
         className="p-4 flex flex-col sm:flex-row sm:justify-around sm:items-center gap-3 dark:bg-gray-400 dark:text-black"
         onClick={(e) => e.stopPropagation()}
       >
-        <h3 className="font-poppins italic font-bold text-xl text-gray-800 tracking-wide">
+        <h3 className="font-poppins italic font-bold text-xl dark:text-white/100 tracking-wide">
           {name}
         </h3>
         <button
