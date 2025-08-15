@@ -5,9 +5,7 @@ const Services = () => {
   const { data, isLoading, isError } = useServices();
 
   return (
-    <div className="p-6 bg-white min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">Our Services</h1>
-
+    <div className="p-6  min-h-screen">
       {isError ? (
         <div className="bg-red-100 text-red-600 p-4 rounded">
           ❌ Failed to load services.

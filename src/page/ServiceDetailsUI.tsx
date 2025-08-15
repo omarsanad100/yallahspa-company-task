@@ -9,6 +9,7 @@ interface ServiceDetailsUIProps {
   selectedRepeat: any;
   setSelectedRepeat: (repeat: any) => void;
   totalPrice: number;
+  theme: string;
 }
 
 const ServiceDetailsUI = ({
@@ -20,10 +21,15 @@ const ServiceDetailsUI = ({
   selectedRepeat,
   setSelectedRepeat,
   totalPrice,
+  theme,
 }: ServiceDetailsUIProps) => {
   if (isLoading)
     return (
-      <div className="p-6 bg-white/50 min-h-screen">
+      <div
+        data-theme-mode={theme}
+        className="p-6 bg-white/50 min-h-screen data-[theme-mode=light]:bg-white data-[theme-mode=dark]:bg-gray-900 data-[theme-mode=dark]:text-gray-800  transition-colors
+        "
+      >
         <div className="animate-pulse space-y-6">
           <div className="h-6 w-32 bg-gray-200 rounded"></div>
           <div className="h-64 bg-gray-200 rounded"></div>
@@ -54,7 +60,11 @@ const ServiceDetailsUI = ({
     );
 
   return (
-    <div className="p-6 bg-white/50 min-h-screen">
+    <div
+      data-theme-mode={theme}
+      className="p-6 bg-white/50 min-h-screen  data-[theme-mode=light]:bg-white data-[theme-mode=dark]:bg-black data-[theme-mode=dark]:text-gray-800  transition-colors
+       "
+    >
       <BackButton />
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -64,9 +74,12 @@ const ServiceDetailsUI = ({
           className="w-full h-96 object-cover"
         />
 
-        <div className="p-6 ">
+        <div
+          data-theme-mode={theme}
+          className="p-6  bg-white/50 min-h-screen  data-[theme-mode=light]:bg-white data-[theme-mode=dark]:bg-black data-[theme-mode=dark]:text-gray-800  transition-colors"
+        >
           <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-gray-800 italic">
               {service.name_en}
             </h1>
             <span
@@ -80,11 +93,13 @@ const ServiceDetailsUI = ({
             </span>
           </div>
 
-          <p className="text-gray-600 mb-6">{service.description_en}</p>
+          <p className="text-gray-600 mb-6 font-bold">
+            {service.description_en}
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Price Options */}
-            <div className="border rounded-lg p-4">
+            <div className="border rounded-lg p-4 ">
               <h2 className="text-xl font-semibold mb-3">Session Options</h2>
 
               {service.prices?.length > 0 && (
@@ -92,7 +107,7 @@ const ServiceDetailsUI = ({
                   {service.prices.map((price: any) => (
                     <div
                       key={price.duration}
-                      className={`p-3 border rounded-lg cursor-pointer transition-all ${
+                      className={`p-3 border rounded-lg cursor-pointer transition-all dark:bg-gray-400 dark:text-black${
                         selectedPrice?.duration === price.duration
                           ? "border-green-500 bg-green-50"
                           : "hover:border-gray-300"
@@ -137,7 +152,7 @@ const ServiceDetailsUI = ({
           </div>
 
           {/* Price Display */}
-          <div className="mt-8 p-4 bg-gray-100 rounded-lg">
+          <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-400 dark:text-black rounded-lg ">
             <div className="flex justify-between items-center">
               <div>
                 <h3 className="text-lg font-semibold">Total Price</h3>

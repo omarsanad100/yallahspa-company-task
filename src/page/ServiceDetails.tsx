@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useServiceById } from "../hooks/useServices";
 import { useState, useEffect } from "react";
 import ServiceDetailsUI from "./ServiceDetailsUI";
+import { useTheme } from "../components/theme/ThemeProvider";
 
 const ServiceDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -9,6 +10,7 @@ const ServiceDetails = () => {
   const [selectedPrice, setSelectedPrice] = useState<any>(null);
   const [selectedRepeat, setSelectedRepeat] = useState<any>(null);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const { theme } = useTheme();
 
   // Set initial selections when service data loads
   useEffect(() => {
@@ -41,6 +43,7 @@ const ServiceDetails = () => {
       selectedRepeat={selectedRepeat}
       setSelectedRepeat={setSelectedRepeat}
       totalPrice={totalPrice}
+      theme={theme}
     />
   );
 };

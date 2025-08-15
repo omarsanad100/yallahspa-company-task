@@ -1,18 +1,29 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-type Props = {
-  id: number;
-  name: string;
+interface ServiceCardProps {
+  id: string;
   image: string;
+  name: string;
   type: string;
-};
+}
 
-const ServiceCard = ({ id, name, image, type }: Props) => {
+const ServiceCard = ({ id, image, name, type }: ServiceCardProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  // handle fn for loading state
+  const handleLoading = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate(`/services/${id}`);
+    }, 1000);
+  };
+
   return (
-    <Link
-      to={`/services/${id}`}
-      className="bg-gray-100 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300 hover:text-green-600"
-    >
+    <div className="bg-gray-100 rounded-xl shadow-md overflow-hidden hover:shadow-lg hover:shadow-green-500/50 transition ">
+      {/* Image & Badge */}
       <div className="relative h-48">
         <img src={image} alt={name} className="w-full h-full object-cover" />
         <span
@@ -25,10 +36,28 @@ const ServiceCard = ({ id, name, image, type }: Props) => {
           {type === "custom" ? "Package" : "Single"}
         </span>
       </div>
-      <div className="p-4">
-        <h3 className="font-semibold text-lg">{name}</h3>
+
+      {/* Name & Button */}
+      <div
+        className="p-4 flex flex-col sm:flex-row sm:justify-around sm:items-center gap-3 dark:bg-gray-400 dark:text-black"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 className="font-poppins italic font-bold text-xl text-gray-800 tracking-wide">
+          {name}
+        </h3>
+        <button
+          disabled={isLoading}
+          onClick={handleLoading}
+          className="px-10 py-2 text-gray-800 font-medium font-poppins bg-gradient-to-r from-white/80 to-green-500/80 backdrop-blur-md border-b border-green-300/40 shadow-lg  rounded-lg hover:bg-gray-800 transition duration-300 cursor-pointer"
+        >
+          {isLoading ? (
+            <span className="animate-spin">Loading...</span>
+          ) : (
+            "View Details"
+          )}
+        </button>
       </div>
-    </Link>
+    </div>
   );
 };
 
